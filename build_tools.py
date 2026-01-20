@@ -633,6 +633,13 @@ def build():
     # Tools
     for tool in tools:
         sitemap_content += f'  <url>\n    <loc>https://freeconvert.cloud/tools/{tool["id"]}.html</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n'
+    
+    # Hub Pages (Blog) - Scan directory
+    if os.path.exists('blog/hub-pages'):
+        for filename in os.listdir('blog/hub-pages'):
+            if filename.endswith('.html'):
+                sitemap_content += f'  <url>\n    <loc>https://freeconvert.cloud/blog/hub-pages/{filename}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>\n'
+
     sitemap_content += '</urlset>'
     
     with open('sitemap.xml', 'w', encoding='utf-8') as f:
