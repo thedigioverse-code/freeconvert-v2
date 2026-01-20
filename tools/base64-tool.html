@@ -158,6 +158,14 @@ btn.onclick = () => {
         } else if (toolId === 'base64-tool') {
             // Check if input looks like base64 to decide decode vs encode, or simple toggle
             try { output.value = atob(val); } catch { output.value = btoa(val); }
+        } else if (toolId === 'url-encoder-decoder') {
+            try { output.value = decodeURIComponent(val); } catch { output.value = encodeURIComponent(val); }
+        } else if (toolId === 'binary-text-converter') {
+            if (/^[01\s]+$/.test(val)) {
+                output.value = val.split(' ').map(bin => String.fromCharCode(parseInt(bin, 2))).join('');
+            } else {
+                output.value = val.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
+            }
         }
     } catch (e) {
         output.value = "Error: " + e.message;

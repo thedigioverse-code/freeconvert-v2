@@ -214,6 +214,60 @@ if (toolId === 'lorem-ipsum') {
             document.getElementById('speed-result').innerText = "Error - Check Connection";
         }
     };
+} else if (toolId === 'image-to-base64') {
+    container.innerHTML = `
+        <div id="drop-zone" class="drop-zone">
+            <div class="drop-icon">📁</div>
+            <p>Upload Image to get Base64</p>
+            <input type="file" id="file-input" hidden>
+        </div>
+        <textarea id="base64-out" class="glass-input" style="margin-top:20px; height: 200px;" readonly placeholder="Data URI will appear here..."></textarea>
+    `;
+    const fInput = document.getElementById('file-input');
+    const dZone = document.getElementById('drop-zone');
+    dZone.onclick = () => fInput.click();
+    fInput.onchange = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (ev) => { document.getElementById('base64-out').value = ev.target.result; };
+        reader.readAsDataURL(file);
+    };
+} else if (toolId === 'aspect-ratio-calculator') {
+    container.innerHTML = `
+        <div class="config-panel">
+            <label>Width: <input type="number" id="ratio-w" value="1920"></label>
+            <label>Height: <input type="number" id="ratio-h" value="1080"></label>
+        </div>
+        <h2 id="ratio-result" style="text-align:center; margin-top:20px; color:#a855f7;">16:9</h2>
+    `;
+    const calc = () => {
+        const w = document.getElementById('ratio-w').value;
+        const h = document.getElementById('ratio-h').value;
+        const gcd = (a, b) => b ? gcd(b, a % b) : a;
+        const common = gcd(w, h);
+        document.getElementById('ratio-result').textContent = (w/common) + ":" + (h/common);
+    };
+    document.getElementById('ratio-w').oninput = calc;
+    document.getElementById('ratio-h').oninput = calc;
+} else if (toolId === 'rgb-hex-converter') {
+    container.innerHTML = `
+        <div class="config-panel">
+            <label>R: <input type="number" id="color-r" min="0" max="255" value="168"></label>
+            <label>G: <input type="number" id="color-g" min="0" max="255" value="85"></label>
+            <label>B: <input type="number" id="color-b" min="0" max="255" value="247"></label>
+        </div>
+        <div id="color-preview" style="height:100px; border-radius:10px; margin:20px 0; background:#a855f7;"></div>
+        <h2 id="hex-result" style="text-align:center; color:white;">#A855F7</h2>
+    `;
+    const update = () => {
+        const r = parseInt(document.getElementById('color-r').value);
+        const g = parseInt(document.getElementById('color-g').value);
+        const b = parseInt(document.getElementById('color-b').value);
+        const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
+        document.getElementById('color-preview').style.background = hex;
+        document.getElementById('hex-result').textContent = hex;
+    };
+    ['color-r', 'color-g', 'color-b'].forEach(id => document.getElementById(id).oninput = update);
 }
 
     </script>

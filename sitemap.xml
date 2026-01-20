@@ -121,6 +121,46 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://freeconvert.cloud/tools/html-formatter.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/tools/css-formatter.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/tools/js-formatter.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/tools/url-encoder-decoder.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/tools/binary-text-converter.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/tools/image-to-base64.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/tools/aspect-ratio-calculator.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/tools/rgb-hex-converter.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://freeconvert.cloud/blog/hub-pages/base64-encode-image-data.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

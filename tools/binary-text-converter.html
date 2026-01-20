@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markdown Editor | freeconvert.cloud</title>
+    <title>Binary to Text | freeconvert.cloud</title>
     <link rel="icon" type="image/png" href="../assets/favicon.png">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,16 +14,16 @@
     <link rel="stylesheet" href="tool-style.css">
 
     <!-- SEO & Social (Injected by builder) -->
-    <link rel="canonical" href="https://freeconvert.cloud/tools/markdown-editor.html" />
-    <meta property="og:title" content="Markdown Editor | freeconvert.cloud">
-    <meta property="og:description" content="Write Markdown with live HTML preview.">
+    <link rel="canonical" href="https://freeconvert.cloud/tools/binary-text-converter.html" />
+    <meta property="og:title" content="Binary to Text | freeconvert.cloud">
+    <meta property="og:description" content="Convert between Binary code and plain text.">
     <meta property="og:image" content="https://freeconvert.cloud/assets/favicon.png">
     <!-- Using Logo as default og:image -->
-    <meta property="og:url" content="https://freeconvert.cloud/tools/markdown-editor.html">
+    <meta property="og:url" content="https://freeconvert.cloud/tools/binary-text-converter.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
 
-    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "name": "Markdown Editor", "operatingSystem": "Any", "applicationCategory": "Developer", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Write Markdown with live HTML preview."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Step 1: How do I use Markdown Editor?", "acceptedAnswer": {"@type": "Answer", "text": "Paste code."}}, {"@type": "Question", "name": "Step 2: How do I use Markdown Editor?", "acceptedAnswer": {"@type": "Answer", "text": "See result instantly."}}]}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "name": "Binary to Text", "operatingSystem": "Any", "applicationCategory": "Developer", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Convert between Binary code and plain text."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Step 1: How do I use Binary to Text?", "acceptedAnswer": {"@type": "Answer", "text": "Paste input."}}, {"@type": "Question", "name": "Step 2: How do I use Binary to Text?", "acceptedAnswer": {"@type": "Answer", "text": "Click Process."}}, {"@type": "Question", "name": "Step 3: How do I use Binary to Text?", "acceptedAnswer": {"@type": "Answer", "text": "Copy output."}}]}]}</script>
 </head>
 
 <body>
@@ -68,34 +68,26 @@
 
     <main class="tool-content">
         <section class="tool-header">
-            <h1>Markdown <span class="gradient-text">Editor</span></h1>
-            <p>Write Markdown with live HTML preview.</p>
+            <h1>Binary <span class="gradient-text">to Text</span></h1>
+            <p>Convert between Binary code and plain text.</p>
         </section>
 
         <section class="upload-section glass" id="tool-container">
             <!-- Tool Logic UI will be injected here -->
             
-<div id="editor-container" class="split-view">
-    <textarea id="adv-input" class="glass-input" placeholder="Paste code here..."></textarea>
-    <div id="adv-preview" class="glass-input preview-box"></div>
+<div class="split-view">
+    <textarea id="dev-input" class="glass-input" placeholder="Input..."></textarea>
+    <div class="action-buttons-vertical">
+        <button id="action-btn" class="btn primary">Process -></button>
+    </div>
+    <textarea id="dev-output" class="glass-input" placeholder="Output..." readonly></textarea>
 </div>
-<textarea id="adv-output" class="glass-input" style="display:none;" placeholder="Output..."></textarea>
-<div class="action-buttons">
-    <button id="adv-action-btn" class="btn primary">Run</button>
-</div>
-<style> .split-view { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; } </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-css.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-html.min.js"></script>
-<script src="https://unpkg.com/sql-formatter@4.0.2/dist/sql-formatter.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js"></script>
 
         </section>
 
         <article class="seo-content glass">
-            <h2>How to use Markdown Editor?</h2>
-            <ol><li>Paste code.</li><li>See result instantly.</li></ol>
+            <h2>How to use Binary to Text?</h2>
+            <ol><li>Paste input.</li><li>Click Process.</li><li>Copy output.</li></ol>
             <p>Your privacy matters: All processing happens locally on your computer. We never see your data.</p>
         </article>
     </main>
@@ -146,38 +138,39 @@
 
     <script src="tool-logic.js"></script>
     <script>
-        // Specific logic for markdown-editor
+        // Specific logic for binary-text-converter
         
-const input = document.getElementById('adv-input');
-const preview = document.getElementById('adv-preview');
-const output = document.getElementById('adv-output');
-const btn = document.getElementById('adv-action-btn');
-const toolId = 'markdown-editor';
+const input = document.getElementById('dev-input');
+const output = document.getElementById('dev-output');
+const btn = document.getElementById('action-btn');
+const toolId = 'binary-text-converter';
 
 btn.onclick = () => {
     const val = input.value;
-    if (toolId === 'sql-formatter') {
-        output.style.display = 'block';
-        preview.style.display = 'none';
-    } else if (toolId === 'html-formatter') {
-        output.style.display = 'block';
-        preview.style.display = 'none';
-        output.value = html_beautify(val, { indent_size: 2 });
-    } else if (toolId === 'css-formatter') {
-        output.style.display = 'block';
-        preview.style.display = 'none';
-        output.value = css_beautify(val, { indent_size: 2 });
-    } else if (toolId === 'js-formatter') {
-        output.style.display = 'block';
-        preview.style.display = 'none';
-        output.value = js_beautify(val, { indent_size: 2 });
+    try {
+        if (toolId === 'json-to-csv') {
+            const items = JSON.parse(val);
+            const replacer = (key, value) => value === null ? '' : value;
+            const header = Object.keys(items[0]);
+            let csv = items.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+            csv.unshift(header.join(','));
+            output.value = csv.join('\r\n');
+        } else if (toolId === 'base64-tool') {
+            // Check if input looks like base64 to decide decode vs encode, or simple toggle
+            try { output.value = atob(val); } catch { output.value = btoa(val); }
+        } else if (toolId === 'url-encoder-decoder') {
+            try { output.value = decodeURIComponent(val); } catch { output.value = encodeURIComponent(val); }
+        } else if (toolId === 'binary-text-converter') {
+            if (/^[01\s]+$/.test(val)) {
+                output.value = val.split(' ').map(bin => String.fromCharCode(parseInt(bin, 2))).join('');
+            } else {
+                output.value = val.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
+            }
+        }
+    } catch (e) {
+        output.value = "Error: " + e.message;
     }
-    // Diff checker requiring 2 inputs logic omitted for brevity in this generic template
 };
-// Live preview for markdown
-if (toolId === 'markdown-editor') {
-    input.addEventListener('input', () => { preview.innerHTML = marked.parse(input.value); });
-}
 
     </script>
 </body>

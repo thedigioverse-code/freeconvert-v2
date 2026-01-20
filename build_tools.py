@@ -364,6 +364,14 @@ btn.onclick = () => {
         } else if (toolId === 'base64-tool') {
             // Check if input looks like base64 to decide decode vs encode, or simple toggle
             try { output.value = atob(val); } catch { output.value = btoa(val); }
+        } else if (toolId === 'url-encoder-decoder') {
+            try { output.value = decodeURIComponent(val); } catch { output.value = encodeURIComponent(val); }
+        } else if (toolId === 'binary-text-converter') {
+            if (/^[01\\s]+$/.test(val)) {
+                output.value = val.split(' ').map(bin => String.fromCharCode(parseInt(bin, 2))).join('');
+            } else {
+                output.value = val.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
+            }
         }
     } catch (e) {
         output.value = "Error: " + e.message;
@@ -381,6 +389,9 @@ DEV_ADVANCED_UI = """
     <button id="adv-action-btn" class="btn primary">Run</button>
 </div>
 <style> .split-view { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; } </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-html.min.js"></script>
 <script src="https://unpkg.com/sql-formatter@4.0.2/dist/sql-formatter.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js"></script>
@@ -398,9 +409,18 @@ btn.onclick = () => {
     if (toolId === 'sql-formatter') {
         output.style.display = 'block';
         preview.style.display = 'none';
-        output.value = sqlFormatter.format(val);
-    } else if (toolId === 'markdown-editor') {
-        preview.innerHTML = marked.parse(val);
+    } else if (toolId === 'html-formatter') {
+        output.style.display = 'block';
+        preview.style.display = 'none';
+        output.value = html_beautify(val, { indent_size: 2 });
+    } else if (toolId === 'css-formatter') {
+        output.style.display = 'block';
+        preview.style.display = 'none';
+        output.value = css_beautify(val, { indent_size: 2 });
+    } else if (toolId === 'js-formatter') {
+        output.style.display = 'block';
+        preview.style.display = 'none';
+        output.value = js_beautify(val, { indent_size: 2 });
     }
     // Diff checker requiring 2 inputs logic omitted for brevity in this generic template
 };
@@ -495,6 +515,60 @@ if (toolId === 'lorem-ipsum') {
             document.getElementById('speed-result').innerText = "Error - Check Connection";
         }
     };
+} else if (toolId === 'image-to-base64') {
+    container.innerHTML = `
+        <div id="drop-zone" class="drop-zone">
+            <div class="drop-icon">📁</div>
+            <p>Upload Image to get Base64</p>
+            <input type="file" id="file-input" hidden>
+        </div>
+        <textarea id="base64-out" class="glass-input" style="margin-top:20px; height: 200px;" readonly placeholder="Data URI will appear here..."></textarea>
+    `;
+    const fInput = document.getElementById('file-input');
+    const dZone = document.getElementById('drop-zone');
+    dZone.onclick = () => fInput.click();
+    fInput.onchange = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (ev) => { document.getElementById('base64-out').value = ev.target.result; };
+        reader.readAsDataURL(file);
+    };
+} else if (toolId === 'aspect-ratio-calculator') {
+    container.innerHTML = `
+        <div class="config-panel">
+            <label>Width: <input type="number" id="ratio-w" value="1920"></label>
+            <label>Height: <input type="number" id="ratio-h" value="1080"></label>
+        </div>
+        <h2 id="ratio-result" style="text-align:center; margin-top:20px; color:#a855f7;">16:9</h2>
+    `;
+    const calc = () => {
+        const w = document.getElementById('ratio-w').value;
+        const h = document.getElementById('ratio-h').value;
+        const gcd = (a, b) => b ? gcd(b, a % b) : a;
+        const common = gcd(w, h);
+        document.getElementById('ratio-result').textContent = (w/common) + ":" + (h/common);
+    };
+    document.getElementById('ratio-w').oninput = calc;
+    document.getElementById('ratio-h').oninput = calc;
+} else if (toolId === 'rgb-hex-converter') {
+    container.innerHTML = `
+        <div class="config-panel">
+            <label>R: <input type="number" id="color-r" min="0" max="255" value="168"></label>
+            <label>G: <input type="number" id="color-g" min="0" max="255" value="85"></label>
+            <label>B: <input type="number" id="color-b" min="0" max="255" value="247"></label>
+        </div>
+        <div id="color-preview" style="height:100px; border-radius:10px; margin:20px 0; background:#a855f7;"></div>
+        <h2 id="hex-result" style="text-align:center; color:white;">#A855F7</h2>
+    `;
+    const update = () => {
+        const r = parseInt(document.getElementById('color-r').value);
+        const g = parseInt(document.getElementById('color-g').value);
+        const b = parseInt(document.getElementById('color-b').value);
+        const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
+        document.getElementById('color-preview').style.background = hex;
+        document.getElementById('hex-result').textContent = hex;
+    };
+    ['color-r', 'color-g', 'color-b'].forEach(id => document.getElementById(id).oninput = update);
 }
 """
 
@@ -554,6 +628,14 @@ def build():
             ui = UTILITY_UI
             script = UTILITY_SCRIPT.replace('{{ID}}', t_id)
             how_to = "<ol><li>Interact with the tool.</li></ol>"
+        elif t_type == 'image_base64':
+            ui = UTILITY_UI
+            script = UTILITY_SCRIPT.replace('{{ID}}', t_id)
+            how_to = "<ol><li>Upload your image.</li><li>Copy the Base64 string.</li></ol>"
+        elif t_type == 'utility_advanced':
+            ui = UTILITY_UI
+            script = UTILITY_SCRIPT.replace('{{ID}}', t_id)
+            how_to = "<ol><li>Enter values.</li><li>See results instantly.</li></ol>"
 
         html = template.replace('{{NAME}}', tool['name'])
         if ' ' in tool['name']:
@@ -645,6 +727,22 @@ def build():
     with open('sitemap.xml', 'w', encoding='utf-8') as f:
         f.write(sitemap_content)
     print("Generated sitemap.xml")
+
+    # Generate tools-data.js for frontend grid
+    frontend_data = []
+    for tool in tools:
+        frontend_data.append({
+            "id": tool["id"],
+            "name": tool["name"],
+            "icon": tool["icon"],
+            "description": tool["description"],
+            "type": tool["type"],
+            "category": tool["category"]
+        })
+    
+    with open('tools/tools-data.js', 'w', encoding='utf-8') as f:
+        f.write(f"window.TOOLS_DATA = {json.dumps(frontend_data, indent=4)};")
+    print("Updated tools/tools-data.js")
 
     # Generate Robots.txt
     robots_content = "User-agent: *\nAllow: /\nSitemap: https://freeconvert.cloud/sitemap.xml"

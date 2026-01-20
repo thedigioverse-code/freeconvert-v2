@@ -228,5 +228,85 @@
         "category": "Security",
         "seo_title": "Password Strength Tester - Check Security",
         "seo_desc": "Analyze password complexity instantly. Zero data storage."
+    },
+    {
+        "id": "html-formatter",
+        "name": "HTML Formatter",
+        "icon": "🌐",
+        "description": "Beautify and format messy HTML code.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "Online HTML Formatter - Beautify HTML Code",
+        "seo_desc": "Format and beautify your HTML code instantly for better readability."
+    },
+    {
+        "id": "css-formatter",
+        "name": "CSS Formatter",
+        "icon": "🎨",
+        "description": "Format and beautify your CSS stylesheets.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "Online CSS Formatter - Clean Up Your Styles",
+        "seo_desc": "Beautify minified or messy CSS code with one click."
+    },
+    {
+        "id": "js-formatter",
+        "name": "JS Formatter",
+        "icon": "📜",
+        "description": "Beautify and format JavaScript snippets.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "JavaScript Formatter - Beautify JS Code",
+        "seo_desc": "Format your JavaScript code for better reading and debugging."
+    },
+    {
+        "id": "url-encoder-decoder",
+        "name": "URL Encoder/Decoder",
+        "icon": "🔗",
+        "description": "Encode or decode URLs for web compatibility.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "URL Encoder & Decoder - Online Web Tool",
+        "seo_desc": "Safely encode and decode URLs and URI components."
+    },
+    {
+        "id": "binary-text-converter",
+        "name": "Binary to Text",
+        "icon": "🤖",
+        "description": "Convert between Binary code and plain text.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "Binary to Text Converter - ASCII Tool",
+        "seo_desc": "Translate binary code to text and vice-versa instantly."
+    },
+    {
+        "id": "image-to-base64",
+        "name": "Image to Base64",
+        "icon": "🖼️",
+        "description": "Convert images into Base64 Data URIs.",
+        "type": "image_base64",
+        "category": "Designer",
+        "seo_title": "Image to Base64 Converter - Online Tool",
+        "seo_desc": "Convert images to Base64 strings for CSS, HTML, or JS usage."
+    },
+    {
+        "id": "aspect-ratio-calculator",
+        "name": "Aspect Ratio Calculator",
+        "icon": "📏",
+        "description": "Calculate perfect aspect ratios for design.",
+        "type": "utility_advanced",
+        "category": "Designer",
+        "seo_title": "Free Aspect Ratio Calculator - UI/UX Tool",
+        "seo_desc": "Calculate image and screen aspect ratios for perfect responsive design."
+    },
+    {
+        "id": "rgb-hex-converter",
+        "name": "RGB to HEX Converter",
+        "icon": "🌈",
+        "description": "Convert between RGB and HEX color codes.",
+        "type": "utility_advanced",
+        "category": "Designer",
+        "seo_title": "RGB to HEX Color Converter - Designer Tool",
+        "seo_desc": "Easily convert RGB colors to HEX codes and vice-versa."
     }
 ]

@@ -84,6 +84,9 @@
     <button id="adv-action-btn" class="btn primary">Run</button>
 </div>
 <style> .split-view { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; } </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-html.min.js"></script>
 <script src="https://unpkg.com/sql-formatter@4.0.2/dist/sql-formatter.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js"></script>
@@ -156,9 +159,18 @@ btn.onclick = () => {
     if (toolId === 'sql-formatter') {
         output.style.display = 'block';
         preview.style.display = 'none';
-        output.value = sqlFormatter.format(val);
-    } else if (toolId === 'markdown-editor') {
-        preview.innerHTML = marked.parse(val);
+    } else if (toolId === 'html-formatter') {
+        output.style.display = 'block';
+        preview.style.display = 'none';
+        output.value = html_beautify(val, { indent_size: 2 });
+    } else if (toolId === 'css-formatter') {
+        output.style.display = 'block';
+        preview.style.display = 'none';
+        output.value = css_beautify(val, { indent_size: 2 });
+    } else if (toolId === 'js-formatter') {
+        output.style.display = 'block';
+        preview.style.display = 'none';
+        output.value = js_beautify(val, { indent_size: 2 });
     }
     // Diff checker requiring 2 inputs logic omitted for brevity in this generic template
 };
