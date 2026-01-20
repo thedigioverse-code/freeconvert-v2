@@ -146,7 +146,7 @@ p {
     -webkit-text-fill-color: transparent;
 }
 
-.nav-menu {
+.nav-links {
     display: flex;
     gap: 2rem;
 }
