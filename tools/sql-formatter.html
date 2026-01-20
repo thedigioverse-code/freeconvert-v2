@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Formatter | freeconvert.cloud</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="tool-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="SQL Formatter | freeconvert.cloud">
+    <meta property="og:description" content="Beautify and format complex SQL queries.">
+    <meta property="og:image" content="https://freeconvert.cloud/assets/social-card.png">
+    <meta property="og:url" content="https://freeconvert.cloud/tools/sql-formatter.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Google Analytics Placeholder -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script> -->
+
+    <link rel="canonical" href="https://freeconvert.cloud/tools/sql-formatter.html" />
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "name": "SQL Formatter", "operatingSystem": "Any", "applicationCategory": "Developer", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Beautify and format complex SQL queries."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Step 1: How do I use SQL Formatter?", "acceptedAnswer": {"@type": "Answer", "text": "Paste code."}}, {"@type": "Question", "name": "Step 2: How do I use SQL Formatter?", "acceptedAnswer": {"@type": "Answer", "text": "See result instantly."}}]}]}</script>
+</head>
+
+<body>
+    <!-- Mega Header -->
+    <header class="header-glass">
+        <nav class="navbar">
+            <a href="../index.html" class="brand-logo">
+                <span class="gradient-text">freeconvert</span>.cloud
+            </a>
+            <div class="nav-menu">
+                <div class="nav-item">
+                    <a href="../index.html#dev" class="nav-link">Developer</a>
+                    <div class="nav-dropdown">
+                        <a href="json-to-csv.html">JSON to CSV</a>
+                        <a href="sql-formatter.html">SQL Formatter</a>
+                        <a href="base64-tool.html">Base64 Encode/Decode</a>
+                        <a href="markdown-editor.html">Markdown Editor</a>
+                        <a href="diff-checker.html">Diff Checker</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="../index.html#image" class="nav-link">Image</a>
+                    <div class="nav-dropdown">
+                        <a href="image-compressor.html">Compressor</a>
+                        <a href="image-resizer.html">Resizer</a>
+                        <a href="png-to-jpg.html">PNG to JPG</a>
+                        <a href="heic-to-jpg.html">HEIC Converter</a>
+                        <a href="svg-to-png.html">SVG to PNG</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="../index.html#utility" class="nav-link">Utility</a>
+                    <div class="nav-dropdown">
+                        <a href="password-generator.html">Password Gen</a>
+                        <a href="qr-generator.html">QR Code</a>
+                        <a href="unit-converter.html">Unit Converter</a>
+                        <a href="speed-test.html">Speed Test</a>
+                        <a href="lorem-ipsum.html">Lorem Ipsum</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tool-content">
+        <section class="tool-header">
+            <h1>SQL <span class="gradient-text">Formatter</span></h1>
+            <p>Beautify and format complex SQL queries.</p>
+        </section>
+
+        <section class="upload-section glass" id="tool-container">
+            <!-- Tool Logic UI will be injected here -->
+            
+<div id="editor-container" class="split-view">
+    <textarea id="adv-input" class="glass-input" placeholder="Paste code here..."></textarea>
+    <div id="adv-preview" class="glass-input preview-box"></div>
+</div>
+<textarea id="adv-output" class="glass-input" style="display:none;" placeholder="Output..."></textarea>
+<div class="action-buttons">
+    <button id="adv-action-btn" class="btn primary">Run</button>
+</div>
+<style> .split-view { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; } </style>
+<script src="https://unpkg.com/sql-formatter@4.0.2/dist/sql-formatter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js"></script>
+
+        </section>
+
+        <article class="seo-content glass">
+            <h2>How to use SQL Formatter?</h2>
+            <ol><li>Paste code.</li><li>See result instantly.</li></ol>
+            <p>Your privacy matters: All processing happens locally on your computer. We never see your data.</p>
+        </article>
+    </main>
+
+    <!-- Mega Footer -->
+    <footer class="footer-mega">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2 class="gradient-text">freeconvert.cloud</h2>
+                <p>The world's most beautiful collection of free online tools. Built with performance and privacy as
+                    default.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Developer</h4>
+                <div class="footer-links">
+                    <a href="json-to-csv.html">JSON to CSV</a>
+                    <a href="sql-formatter.html">SQL Formatter</a>
+                    <a href="base64-tool.html">Base64 Tool</a>
+                    <a href="markdown-editor.html">Markdown Editor</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Designer</h4>
+                <div class="footer-links">
+                    <a href="image-compressor.html">Image Compressor</a>
+                    <a href="image-resizer.html">Image Resizer</a>
+                    <a href="palette-extractor.html">Color Palette</a>
+                    <a href="ico-converter.html">ICO Converter</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Utility</h4>
+                <div class="footer-links">
+                    <a href="password-generator.html">Password Gen</a>
+                    <a href="word-counter.html">Word Counter</a>
+                    <a href="speed-test.html">Speed Test</a>
+                    <a href="stopwatch.html">Stopwatch</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 freeconvert.cloud. All rights reserved.</span>
+            <span>Designed & Developed by <a href="https://hosterlo.com" target="_blank"
+                    class="hosterlo-link">Hosterlo</a></span>
+        </div>
+    </footer>
+
+    <script src="tool-logic.js"></script>
+    <script>
+        // Specific logic for sql-formatter
+        
+const input = document.getElementById('adv-input');
+const preview = document.getElementById('adv-preview');
+const output = document.getElementById('adv-output');
+const btn = document.getElementById('adv-action-btn');
+const toolId = 'sql-formatter';
+
+btn.onclick = () => {
+    const val = input.value;
+    if (toolId === 'sql-formatter') {
+        output.style.display = 'block';
+        preview.style.display = 'none';
+        output.value = sqlFormatter.format(val);
+    } else if (toolId === 'markdown-editor') {
+        preview.innerHTML = marked.parse(val);
+    }
+    // Diff checker requiring 2 inputs logic omitted for brevity in this generic template
+};
+// Live preview for markdown
+if (toolId === 'markdown-editor') {
+    input.addEventListener('input', () => { preview.innerHTML = marked.parse(input.value); });
+}
+
+    </script>
+</body>
+
+</html>

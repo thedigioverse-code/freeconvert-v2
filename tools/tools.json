@@ -1,0 +1,232 @@
+[
+    {
+        "id": "png-to-jpg",
+        "name": "PNG to JPG",
+        "icon": "🖼️",
+        "description": "Convert PNG images to JPG instantly.",
+        "type": "image",
+        "category": "Image",
+        "seo_title": "Convert PNG to JPG Online - 100% Free & Fast",
+        "seo_desc": "Easily convert PNG images to high-quality JPG files. Fast, free, and secure."
+    },
+    {
+        "id": "jpg-to-png",
+        "name": "JPG to PNG",
+        "icon": "🌌",
+        "description": "Transform JPG files with transparency.",
+        "type": "image",
+        "category": "Image",
+        "seo_title": "Convert JPG to PNG Online - Free & Fast",
+        "seo_desc": "Convert JPG images to PNG with transparency support. Simple and secure."
+    },
+    {
+        "id": "word-counter",
+        "name": "Word Counter",
+        "icon": "✍️",
+        "description": "Analyze text length and statistics.",
+        "type": "text",
+        "category": "Text",
+        "seo_title": "Free Online Word Counter - Accuracy Matters",
+        "seo_desc": "Count words, characters, and sentences in your text instantly."
+    },
+    {
+        "id": "password-generator",
+        "name": "Password Generator",
+        "icon": "🔑",
+        "description": "Create unbreakable passwords.",
+        "type": "security",
+        "category": "Security",
+        "seo_title": "Secure Password Generator - Protect Your Accounts",
+        "seo_desc": "Generate strong, random passwords to keep your online presence safe."
+    },
+    {
+        "id": "case-converter",
+        "name": "Case Converter",
+        "icon": "🔡",
+        "description": "Convert text to UPPERCASE, lowercase, or Title Case.",
+        "type": "text",
+        "category": "Text",
+        "seo_title": "Online Case Converter - Change Text Case Instantly",
+        "seo_desc": "Convert text case between upper, lower, and title case for free."
+    },
+    {
+        "id": "image-resizer",
+        "name": "Image Resizer",
+        "icon": "📐",
+        "description": "Resize your images to custom dimensions.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Free Online Image Resizer - Resize Images Instantly",
+        "seo_desc": "Easily resize images to any width and height. Perfect for banners and social media."
+    },
+    {
+        "id": "image-compressor",
+        "name": "Image Compressor",
+        "icon": "🗜️",
+        "description": "Reduce image file size with zero quality loss.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Online Image Compressor - Shrink Files Fast",
+        "seo_desc": "Reduce image size while maintaining perfect quality. Save storage and speed up your site."
+    },
+    {
+        "id": "qr-generator",
+        "name": "QR Generator",
+        "icon": "🧱",
+        "description": "Create custom QR codes for any link.",
+        "type": "qr",
+        "category": "Utility",
+        "seo_title": "Free QR Code Generator - Create Custom QR Codes",
+        "seo_desc": "Generate high-quality QR codes for URLs, text, and more."
+    },
+    {
+        "id": "webp-to-jpg",
+        "name": "WebP to JPG",
+        "icon": "🕸️",
+        "description": "Convert WebP images to high-quality JPG.",
+        "type": "image",
+        "category": "Image",
+        "seo_title": "Convert WebP to JPG Online - 100% Free",
+        "seo_desc": "Easily convert WebP images to JPG format for better compatibility."
+    },
+    {
+        "id": "json-to-csv",
+        "name": "JSON to CSV",
+        "icon": "📊",
+        "description": "Convert JSON data to CSV format instantly.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "JSON to CSV Converter - Free & Secure",
+        "seo_desc": "Convert JSON arrays to CSV files entirely in your browser. No server uploads."
+    },
+    {
+        "id": "base64-tool",
+        "name": "Base64 Encoder/Decoder",
+        "icon": "🔐",
+        "description": "Encode and decode Base64 strings real-time.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "Base64 Encoder & Decoder - Online Tool",
+        "seo_desc": "Fast Base64 encoding and decoding. Works with text and files."
+    },
+    {
+        "id": "sql-formatter",
+        "name": "SQL Formatter",
+        "icon": "💾",
+        "description": "Beautify and format complex SQL queries.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "Free SQL Formatter - Beautify SQL Online",
+        "seo_desc": "Format unreadable SQL into clean, indented code instantly."
+    },
+    {
+        "id": "markdown-editor",
+        "name": "Markdown Editor",
+        "icon": "📝",
+        "description": "Write Markdown with live HTML preview.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "Online Markdown Editor with Real-time Preview",
+        "seo_desc": "The best free online Markdown editor for writers and developers."
+    },
+    {
+        "id": "diff-checker",
+        "name": "Text Diff Checker",
+        "icon": "⚖️",
+        "description": "Compare two texts and highlight differences.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "Online Text Diff Checker - Compare Files",
+        "seo_desc": "Find differences between two text files or code snippets easily."
+    },
+    {
+        "id": "heic-to-jpg",
+        "name": "HEIC to JPG",
+        "icon": "🍏",
+        "description": "Convert iPhone HEIC photos to generic JPG.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Free HEIC to JPG Converter - iPhone Photo Tool",
+        "seo_desc": "Convert HEIC images to JPG directly in your browser. Fast and privacy-focused."
+    },
+    {
+        "id": "svg-to-png",
+        "name": "SVG to PNG",
+        "icon": "🖼️",
+        "description": "Render SVG files as high-quality PNG images.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "SVG to PNG Converter - Online Vector Tool",
+        "seo_desc": "Convert Scalable Vector Graphics (SVG) to PNG images instantly."
+    },
+    {
+        "id": "palette-extractor",
+        "name": "Color Palette Extractor",
+        "icon": "🎨",
+        "description": "Extract dominant colors from any image.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Image Color Palette Generator - Extract Hex Codes",
+        "seo_desc": "Upload an image and get the top 5 dominant colors and their hex codes."
+    },
+    {
+        "id": "ico-converter",
+        "name": "ICO Converter",
+        "icon": "⭐",
+        "description": "Create standard Favicons (.ico) from images.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Free ICO Converter - Make a Favicon",
+        "seo_desc": "Convert PNG or JPG images to .ico format for website favicons."
+    },
+    {
+        "id": "lorem-ipsum",
+        "name": "Lorem Ipsum Generator",
+        "icon": "📜",
+        "description": "Generate dummy text for your designs.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Lorem Ipsum Generator - Dummy Text Tool",
+        "seo_desc": "Generate custom length Lorem Ipsum text for web design and layouts."
+    },
+    {
+        "id": "unit-converter",
+        "name": "Unit Converter",
+        "icon": "📏",
+        "description": "Convert Length, Weight, and Temperature.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "All-in-One Unit Converter - Length, Weight, Temp",
+        "seo_desc": "Simple and fast unit converter for everyday calculations."
+    },
+    {
+        "id": "speed-test",
+        "name": "Internet Speed Test",
+        "icon": "🚀",
+        "description": "Estimate your internet download speed.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Simple Internet Speed Test - Check Connectivity",
+        "seo_desc": "Quickly estimate your internet speed directly from your browser."
+    },
+    {
+        "id": "stopwatch",
+        "name": "Stopwatch & Timer",
+        "icon": "⏱️",
+        "description": "Track time with a clean, dark-mode stopwatch.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Free Online Stopwatch and Countdown Timer",
+        "seo_desc": "Simple browser-based stopwatch and timer for productivity."
+    },
+    {
+        "id": "password-strength",
+        "name": "Password Strength",
+        "icon": "🛡️",
+        "description": "Test the strength of your passwords securely.",
+        "type": "security",
+        "category": "Security",
+        "seo_title": "Password Strength Tester - Check Security",
+        "seo_desc": "Analyze password complexity instantly. Zero data storage."
+    }
+]

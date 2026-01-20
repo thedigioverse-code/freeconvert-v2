@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compressor | freeconvert.cloud</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="tool-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Image Compressor | freeconvert.cloud">
+    <meta property="og:description" content="Reduce image file size with zero quality loss.">
+    <meta property="og:image" content="https://freeconvert.cloud/assets/social-card.png">
+    <meta property="og:url" content="https://freeconvert.cloud/tools/image-compressor.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Google Analytics Placeholder -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script> -->
+
+    <link rel="canonical" href="https://freeconvert.cloud/tools/image-compressor.html" />
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "name": "Image Compressor", "operatingSystem": "Any", "applicationCategory": "Image", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Reduce image file size with zero quality loss."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Step 1: How do I use Image Compressor?", "acceptedAnswer": {"@type": "Answer", "text": "Upload your image."}}, {"@type": "Question", "name": "Step 2: How do I use Image Compressor?", "acceptedAnswer": {"@type": "Answer", "text": "Adjust settings."}}, {"@type": "Question", "name": "Step 3: How do I use Image Compressor?", "acceptedAnswer": {"@type": "Answer", "text": "Download."}}]}]}</script>
+</head>
+
+<body>
+    <!-- Mega Header -->
+    <header class="header-glass">
+        <nav class="navbar">
+            <a href="../index.html" class="brand-logo">
+                <span class="gradient-text">freeconvert</span>.cloud
+            </a>
+            <div class="nav-menu">
+                <div class="nav-item">
+                    <a href="../index.html#dev" class="nav-link">Developer</a>
+                    <div class="nav-dropdown">
+                        <a href="json-to-csv.html">JSON to CSV</a>
+                        <a href="sql-formatter.html">SQL Formatter</a>
+                        <a href="base64-tool.html">Base64 Encode/Decode</a>
+                        <a href="markdown-editor.html">Markdown Editor</a>
+                        <a href="diff-checker.html">Diff Checker</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="../index.html#image" class="nav-link">Image</a>
+                    <div class="nav-dropdown">
+                        <a href="image-compressor.html">Compressor</a>
+                        <a href="image-resizer.html">Resizer</a>
+                        <a href="png-to-jpg.html">PNG to JPG</a>
+                        <a href="heic-to-jpg.html">HEIC Converter</a>
+                        <a href="svg-to-png.html">SVG to PNG</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="../index.html#utility" class="nav-link">Utility</a>
+                    <div class="nav-dropdown">
+                        <a href="password-generator.html">Password Gen</a>
+                        <a href="qr-generator.html">QR Code</a>
+                        <a href="unit-converter.html">Unit Converter</a>
+                        <a href="speed-test.html">Speed Test</a>
+                        <a href="lorem-ipsum.html">Lorem Ipsum</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tool-content">
+        <section class="tool-header">
+            <h1>Image <span class="gradient-text">Compressor</span></h1>
+            <p>Reduce image file size with zero quality loss.</p>
+        </section>
+
+        <section class="upload-section glass" id="tool-container">
+            <!-- Tool Logic UI will be injected here -->
+            
+<div id="drop-zone" class="drop-zone">
+    <div class="drop-icon">📁</div>
+    <p>Drag & Drop files or <span>Click to Browse</span></p>
+    <input type="file" id="file-input" hidden>
+</div>
+<div id="preview-container" class="preview-container" style="display: none;">
+    <div class="controls-panel glass">
+        <div id="resizer-controls" style="display: none;">
+            <label>Width: <input type="number" id="resize-width"></label>
+            <label>Height: <input type="number" id="resize-height"></label>
+            <label><input type="checkbox" id="aspect-ratio" checked> Lock Aspect Ratio</label>
+        </div>
+        <div id="compressor-controls" style="display: none;">
+            <label>Quality: <input type="range" id="quality-slider" min="10" max="100" value="80"> <span id="quality-val">80%</span></label>
+        </div>
+        <div id="palette-controls" style="display: none;">
+            <div id="palette-display" style="display: flex; gap: 10px; margin-top: 10px;"></div>
+        </div>
+    </div>
+    <canvas id="conversion-canvas" style="display: none;"></canvas>
+    <img id="image-preview" src="" alt="Preview">
+    <div class="action-buttons">
+        <button id="convert-btn" class="btn primary">Process & Download</button>
+        <button id="reset-btn" class="btn secondary">Reset</button>
+    </div>
+</div>
+<!-- Libs for advanced tools -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/heic2any/0.0.3/heic2any.min.js"></script>
+
+        </section>
+
+        <article class="seo-content glass">
+            <h2>How to use Image Compressor?</h2>
+            <ol><li>Upload your image.</li><li>Adjust settings.</li><li>Download.</li></ol>
+            <p>Your privacy matters: All processing happens locally on your computer. We never see your data.</p>
+        </article>
+    </main>
+
+    <!-- Mega Footer -->
+    <footer class="footer-mega">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2 class="gradient-text">freeconvert.cloud</h2>
+                <p>The world's most beautiful collection of free online tools. Built with performance and privacy as
+                    default.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Developer</h4>
+                <div class="footer-links">
+                    <a href="json-to-csv.html">JSON to CSV</a>
+                    <a href="sql-formatter.html">SQL Formatter</a>
+                    <a href="base64-tool.html">Base64 Tool</a>
+                    <a href="markdown-editor.html">Markdown Editor</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Designer</h4>
+                <div class="footer-links">
+                    <a href="image-compressor.html">Image Compressor</a>
+                    <a href="image-resizer.html">Image Resizer</a>
+                    <a href="palette-extractor.html">Color Palette</a>
+                    <a href="ico-converter.html">ICO Converter</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Utility</h4>
+                <div class="footer-links">
+                    <a href="password-generator.html">Password Gen</a>
+                    <a href="word-counter.html">Word Counter</a>
+                    <a href="speed-test.html">Speed Test</a>
+                    <a href="stopwatch.html">Stopwatch</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 freeconvert.cloud. All rights reserved.</span>
+            <span>Designed & Developed by <a href="https://hosterlo.com" target="_blank"
+                    class="hosterlo-link">Hosterlo</a></span>
+        </div>
+    </footer>
+
+    <script src="tool-logic.js"></script>
+    <script>
+        // Specific logic for image-compressor
+        
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+const previewContainer = document.getElementById('preview-container');
+const imgPreview = document.getElementById('image-preview');
+const convertBtn = document.getElementById('convert-btn');
+const resetBtn = document.getElementById('reset-btn');
+const canvas = document.getElementById('conversion-canvas');
+
+const rControls = document.getElementById('resizer-controls');
+const cControls = document.getElementById('compressor-controls');
+const pControls = document.getElementById('palette-controls');
+
+const toolId = 'image-compressor';
+
+if (toolId === 'image-resizer') rControls.style.display = 'block';
+if (toolId === 'image-compressor') cControls.style.display = 'block';
+if (toolId === 'palette-extractor') { pControls.style.display = 'block'; convertBtn.textContent = "Extract Colors"; }
+if (toolId === 'heic-to-jpg' || toolId === 'svg-to-png' || toolId === 'ico-converter') convertBtn.textContent = "Convert Now";
+
+dropZone.onclick = () => fileInput.click();
+fileInput.onchange = (e) => handleFiles(e.target.files);
+dropZone.ondragover = (e) => { e.preventDefault(); dropZone.classList.add('active'); };
+dropZone.ondragleave = () => dropZone.classList.remove('active');
+dropZone.ondrop = (e) => { e.preventDefault(); handleFiles(e.dataTransfer.files); };
+
+let originalRatio = 1;
+
+async function handleFiles(files) {
+    if (files.length === 0) return;
+    const file = files[0];
+    
+    // Special handling for HEIC
+    if (toolId === 'heic-to-jpg' && file.name.toLowerCase().endsWith('.heic')) {
+        try {
+            const blob = await heic2any({ blob: file, toType: "image/jpeg" });
+            imgPreview.src = URL.createObjectURL(blob);
+            setupPreview();
+            return;
+        } catch (e) { alert('HEIC Error: ' + e.message); return; }
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        imgPreview.src = e.target.result;
+        setupPreview();
+    };
+    reader.readAsDataURL(file);
+}
+
+function setupPreview() {
+    imgPreview.onload = () => {
+        originalRatio = imgPreview.naturalWidth / imgPreview.naturalHeight;
+        if (toolId === 'image-resizer') {
+            document.getElementById('resize-width').value = imgPreview.naturalWidth;
+            document.getElementById('resize-height').value = imgPreview.naturalHeight;
+        }
+    };
+    dropZone.style.display = 'none';
+    previewContainer.style.display = 'block';
+}
+
+convertBtn.onclick = () => {
+    if (toolId === 'palette-extractor') {
+        const colorThief = new ColorThief();
+        const palette = colorThief.getPalette(imgPreview, 5);
+        const pDisplay = document.getElementById('palette-display');
+        pDisplay.innerHTML = '';
+        palette.forEach(color => {
+            const rgb = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+            const hex = "#" + ((1 << 24) + (color[0] << 16) + (color[1] << 8) + color[2]).toString(16).slice(1).toUpperCase();
+            const div = document.createElement('div');
+            div.style.backgroundColor = rgb;
+            div.style.width = '50px';
+            div.style.height = '50px';
+            div.title = hex;
+            div.onclick = () => { navigator.clipboard.writeText(hex); alert('Copied ' + hex); };
+            pDisplay.appendChild(div);
+        });
+        return;
+    }
+
+    const ctx = canvas.getContext('2d');
+    let w = imgPreview.naturalWidth;
+    let h = imgPreview.naturalHeight;
+
+    if (toolId === 'image-resizer') {
+        w = document.getElementById('resize-width').value;
+        h = document.getElementById('resize-height').value;
+    }
+    if (toolId === 'ico-converter') { w = 32; h = 32; }
+
+    canvas.width = w;
+    canvas.height = h;
+    ctx.drawImage(imgPreview, 0, 0, w, h);
+    
+    let quality = 0.9;
+    if (toolId === 'image-compressor') quality = document.getElementById('quality-slider').value / 100;
+    
+    const format = (toolId === 'svg-to-png' || toolId === 'image-compressor' && !imgPreview.src.includes('image/jpeg')) ? 'image/png' : 'image/jpeg';
+    
+    let dataUrl = canvas.toDataURL(format, quality);
+    let downloadName = `converted-${Date.now()}.${format === 'image/jpeg' ? 'jpg' : 'png'}`;
+    
+    if (toolId === 'ico-converter') {
+        downloadName = 'favicon.ico'; 
+        // Logic for real ICO binary is complex client-side, using PNG rename as basic fallback for MVP
+         dataUrl = canvas.toDataURL('image/png');
+    }
+
+    const link = document.createElement('a');
+    link.download = downloadName;
+    link.href = dataUrl;
+    link.click();
+};
+resetBtn.onclick = () => location.reload();
+
+    </script>
+</body>
+
+</html>
