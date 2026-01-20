@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', async () => {
+    // Mobile Menu Toggle
+    const mobileToggle = document.getElementById('mobile-toggle') || document.querySelector('.mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    }
+
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // Tool Search
     const searchInput = document.getElementById('tool-search');
     const toolGrid = document.querySelector('.tool-grid');
 
