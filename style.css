@@ -107,14 +107,22 @@ p {
     align-items: center;
 }
 
-.brand-logo {
+.logo {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 800;
     text-decoration: none;
     color: white;
+    letter-spacing: -0.03em;
+}
+
+.logo .highlight {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .nav-menu {
