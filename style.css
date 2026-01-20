@@ -131,12 +131,14 @@ p {
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 1.5rem;
-    font-weight: 800;
     text-decoration: none;
-    color: white;
-    letter-spacing: -0.03em;
+    height: 40px;
+}
+
+.logo img {
+    height: 100%;
+    width: auto;
+    display: block;
 }
 
 .logo .highlight {
