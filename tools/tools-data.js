@@ -139,7 +139,7 @@ window.TOOLS_DATA = [
         "id": "ico-converter",
         "name": "ICO Converter",
         "icon": "\u2b50",
-        "description": "Create standard Favicons (.ico) from images.",
+        "description": "Create standard Favicons (.ico) from images. Note: This tool creates a 32x32 PNG file and renames it to .ico.",
         "type": "image_advanced",
         "category": "Image"
     },

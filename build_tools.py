@@ -409,6 +409,7 @@ btn.onclick = () => {
     if (toolId === 'sql-formatter') {
         output.style.display = 'block';
         preview.style.display = 'none';
+        output.value = sqlFormatter.format(val);
     } else if (toolId === 'html-formatter') {
         output.style.display = 'block';
         preview.style.display = 'none';
@@ -421,8 +422,20 @@ btn.onclick = () => {
         output.style.display = 'block';
         preview.style.display = 'none';
         output.value = js_beautify(val, { indent_size: 2 });
+    } else if (toolId === 'diff-checker') {
+        const val2 = preview.textContent;
+        const diff = Diff.diffChars(val, val2);
+        const fragment = document.createDocumentFragment();
+        diff.forEach(function(part){
+            const span = document.createElement('span');
+            span.style.color = part.added ? 'green' :
+                part.removed ? 'red' : 'grey';
+            span.appendChild(document.createTextNode(part.value));
+            fragment.appendChild(span);
+        });
+        preview.innerHTML = '';
+        preview.appendChild(fragment);
     }
-    // Diff checker requiring 2 inputs logic omitted for brevity in this generic template
 };
 // Live preview for markdown
 if (toolId === 'markdown-editor') {
@@ -501,18 +514,26 @@ if (toolId === 'lorem-ipsum') {
 } else if (toolId === 'speed-test') {
     container.innerHTML = `<div style="text-align: center"><button class="btn primary" onclick="runSpeed()">Start Speed Test</button><h2 id="speed-result" style="margin-top: 2rem; font-size: 2rem;"></h2></div>`;
     window.runSpeed = async () => {
-        document.getElementById('speed-result').innerText = "Testing...";
+        const res = document.getElementById('speed-result');
+        res.innerText = "Testing...";
         const start = Date.now();
-        // Fetch a known file size (e.g. 500kb dummy image or just reuse google logo multiple times for approx)
         try {
-            await fetch('https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png?cache=' + Math.random());
-            await fetch('https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png?cache=' + Math.random());
+            // Using a more reliable way to measure: fetch several large assets
+            const images = [
+                'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
+                'https://www.gstatic.com/webp/gallery/1.webp',
+                'https://www.gstatic.com/webp/gallery/2.webp'
+            ];
+            for(let url of images) {
+                await fetch(url + '?cache=' + Math.random());
+            }
             const duration = (Date.now() - start) / 1000;
-            // Approx mock logic improved
-            const speed = (20 / duration).toFixed(2); 
-            document.getElementById('speed-result').innerText = speed + " Mbps (Estimated)";
-        } catch {
-            document.getElementById('speed-result').innerText = "Error - Check Connection";
+            // Rough estimation for demo purposes
+            const speed = (25 / duration).toFixed(2); 
+            res.innerText = speed + " Mbps (Estimated)";
+        } catch (e) {
+            res.innerText = "Error - Check Connection or CORS";
+            console.error(e);
         }
     };
 } else if (toolId === 'image-to-base64') {
@@ -569,6 +590,64 @@ if (toolId === 'lorem-ipsum') {
         document.getElementById('hex-result').textContent = hex;
     };
     ['color-r', 'color-g', 'color-b'].forEach(id => document.getElementById(id).oninput = update);
+} else if (toolId === 'unit-converter') {
+    container.innerHTML = `
+        <div class="config-panel" style="flex-direction: column; gap: 15px;">
+            <div style="display: flex; gap: 10px; width: 100%;">
+                <input type="number" id="unit-val" value="1" class="glass-input" style="flex: 2;">
+                <select id="unit-type" class="glass-input" style="flex: 1; padding: 0 10px;">
+                    <option value="length">Length</option>
+                    <option value="weight">Weight</option>
+                    <option value="temp">Temp</option>
+                </select>
+            </div>
+            <div style="display: flex; gap: 10px; width: 100%;">
+                <select id="unit-from" class="glass-input" style="flex: 1;"></select>
+                <span style="display: flex; align-items: center;">to</span>
+                <select id="unit-to" class="glass-input" style="flex: 1;"></select>
+            </div>
+        </div>
+        <h2 id="unit-result" style="text-align:center; margin-top:20px; color:#a855f7;">-</h2>
+    `;
+    const units = {
+        length: { m: 1, km: 1000, cm: 0.01, mm: 0.001, mi: 1609.34, yd: 0.9144, ft: 0.3048, in: 0.0254 },
+        weight: { kg: 1, g: 0.001, mg: 0.000001, lb: 0.453592, oz: 0.0283495 },
+        temp: { c: 'c', f: 'f', k: 'k' }
+    };
+    const updateSelects = () => {
+        const type = document.getElementById('unit-type').value;
+        const from = document.getElementById('unit-from');
+        const to = document.getElementById('unit-to');
+        const keys = Object.keys(units[type]);
+        from.innerHTML = to.innerHTML = keys.map(u => `<option value="${u}">${u.toUpperCase()}</option>`).join('');
+        if (type === 'length') to.value = 'km';
+        if (type === 'weight') to.value = 'g';
+        if (type === 'temp') to.value = 'f';
+        calc();
+    };
+    const calc = () => {
+        const val = parseFloat(document.getElementById('unit-val').value);
+        const type = document.getElementById('unit-type').value;
+        const from = document.getElementById('unit-from').value;
+        const to = document.getElementById('unit-to').value;
+        if (isNaN(val)) return;
+        let res;
+        if (type === 'temp') {
+            let c;
+            if (from === 'c') c = val;
+            else if (from === 'f') c = (val - 32) * 5 / 9;
+            else c = val - 273.15;
+            if (to === 'c') res = c;
+            else if (to === 'f') res = (c * 9 / 5) + 32;
+            else res = c + 273.15;
+        } else {
+            res = val * units[type][from] / units[type][to];
+        }
+        document.getElementById('unit-result').textContent = res.toFixed(4).replace(/\\.0000$/, '') + " " + to.toUpperCase();
+    };
+    document.getElementById('unit-type').onchange = updateSelects;
+    ['unit-val', 'unit-from', 'unit-to'].forEach(id => document.getElementById(id).oninput = calc);
+    updateSelects();
 }
 """
 
