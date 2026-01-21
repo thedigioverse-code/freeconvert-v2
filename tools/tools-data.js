@@ -246,5 +246,37 @@ window.TOOLS_DATA = [
         "description": "Convert between RGB and HEX color codes.",
         "type": "utility_advanced",
         "category": "Designer"
+    },
+    {
+        "id": "csv-to-json",
+        "name": "CSV to JSON",
+        "icon": "\ud83d\udcd1",
+        "description": "Convert CSV data to JSON format instantly.",
+        "type": "dev_basic",
+        "category": "Developer"
+    },
+    {
+        "id": "hash-generator",
+        "name": "Hash Generator",
+        "icon": "\ud83d\udd10",
+        "description": "Generate MD5, SHA1, and SHA256 hashes.",
+        "type": "utility",
+        "category": "Security"
+    },
+    {
+        "id": "unicode-converter",
+        "name": "Unicode Converter",
+        "icon": "\ud83d\udd21",
+        "description": "Convert text to Unicode and vice-versa.",
+        "type": "dev_basic",
+        "category": "Developer"
+    },
+    {
+        "id": "morse-code",
+        "name": "Morse Code Converter",
+        "icon": "\ud83d\udcdf",
+        "description": "Translate text to Morse code and back.",
+        "type": "utility",
+        "category": "Utility"
     }
 ];

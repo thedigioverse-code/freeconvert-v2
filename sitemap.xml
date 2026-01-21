@@ -161,6 +161,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://freeconvert.cloud/tools/csv-to-json.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/tools/hash-generator.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/tools/unicode-converter.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/tools/morse-code.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://freeconvert.cloud/blog/hub-pages/base64-encode-image-data.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

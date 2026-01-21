@@ -373,6 +373,31 @@ btn.onclick = () => {
                 output.value = val.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
             }
         }
+        } else if (toolId === 'csv-to-json') {
+            const lines = val.split('\\n');
+            const result = [];
+            const headers = lines[0].split(',');
+            for (let i = 1; i < lines.length; i++) {
+                const obj = {};
+                const currentline = lines[i].split(',');
+                if (currentline.length === headers.length) {
+                    for (let j = 0; j < headers.length; j++) {
+                        obj[headers[j].trim()] = currentline[j].trim();
+                    }
+                    result.push(obj);
+                }
+            }
+            output.value = JSON.stringify(result, null, 2);
+        } else if (toolId === 'unicode-converter') {
+            if (val.includes('\\\\u')) {
+                output.value = val.replace(/\\\\u([\\da-fA-F]{4})/g, (match, grp) => String.fromCharCode(parseInt(grp, 16)));
+            } else {
+                output.value = val.split('').map(char => {
+                    const code = char.charCodeAt(0).toString(16).toUpperCase();
+                    return '\\\\u' + ('0000' + code).slice(-4);
+                }).join('');
+            }
+        }
     } catch (e) {
         output.value = "Error: " + e.message;
     }
@@ -648,6 +673,57 @@ if (toolId === 'lorem-ipsum') {
     document.getElementById('unit-type').onchange = updateSelects;
     ['unit-val', 'unit-from', 'unit-to'].forEach(id => document.getElementById(id).oninput = calc);
     updateSelects();
+} else if (toolId === 'hash-generator') {
+    container.innerHTML = `
+        <div class="config-panel">
+            <textarea id="hash-input" class="glass-input" placeholder="Enter text to hash..." style="height: 100px;"></textarea>
+            <div style="display: grid; gap: 10px; margin-top: 20px;">
+                <div class="glass-input" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>MD5:</span> <code id="md5-out" style="word-break: break-all;">-</code>
+                </div>
+                <div class="glass-input" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>SHA1:</span> <code id="sha1-out" style="word-break: break-all;">-</code>
+                </div>
+                <div class="glass-input" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>SHA256:</span> <code id="sha256-out" style="word-break: break-all;">-</code>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    `;
+    const hInput = document.getElementById('hash-input');
+    hInput.oninput = () => {
+        const v = hInput.value;
+        if(!v) return;
+        document.getElementById('md5-out').textContent = CryptoJS.MD5(v).toString();
+        document.getElementById('sha1-out').textContent = CryptoJS.SHA1(v).toString();
+        document.getElementById('sha256-out').textContent = CryptoJS.SHA256(v).toString();
+    };
+} else if (toolId === 'morse-code') {
+    const map = {
+        'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
+        'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
+        'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
+        'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+        'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--',
+        '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
+        '9': '----.', '0': '-----', ' ': '/'
+    };
+    const reverseMap = Object.entries(map).reduce((acc, [k, v]) => ({ ...acc, [v]: k }), {});
+    container.innerHTML = `
+        <textarea id="morse-input" class="glass-input" placeholder="Enter Text or Morse Code..." style="height: 150px;"></textarea>
+        <div class="action-buttons" style="margin-top: 20px;">
+            <button id="to-morse" class="btn primary">Text -> Morse</button>
+            <button id="from-morse" class="btn secondary">Morse -> Text</button>
+        </div>
+    `;
+    const mInput = document.getElementById('morse-input');
+    document.getElementById('to-morse').onclick = () => {
+        mInput.value = mInput.value.toUpperCase().split('').map(c => map[c] || c).join(' ');
+    };
+    document.getElementById('from-morse').onclick = () => {
+        mInput.value = mInput.value.split(' ').map(c => reverseMap[c] || c).join('');
+    };
 }
 """
 
