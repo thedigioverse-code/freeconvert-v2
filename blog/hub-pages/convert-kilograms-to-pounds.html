@@ -5,8 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convert Kilograms to Pounds | freeconvert.cloud Blog</title>
+    <link rel="icon" type="image/png" href="../../assets/favicon.png">
     <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../tool-style.css"> <!-- Reusing tool styles for consistency -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Social Tags -->
+    <meta property="og:title" content="Convert Kilograms to Pounds">
+    <meta property="og:description" content="Read our latest guide on Convert Kilograms to Pounds - Free Convert Cloud">
+    <meta property="og:image" content="https://freeconvert.cloud/assets/favicon.png">
+    <meta property="og:type" content="article">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Convert Kilograms to Pounds",
+      "image": "https://freeconvert.cloud/assets/favicon.png",
+      "author": {
+        "@type": "Organization",
+        "name": "freeconvert.cloud"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "freeconvert.cloud",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://freeconvert.cloud/assets/logo.png"
+        }
+      },
+      "datePublished": "Updated Today"
+    }
+    </script>
+
+    <!-- Analytics Placeholder -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
     <style>
         .blog-container {
             max-width: 800px;
@@ -30,11 +64,12 @@
         }
 
         .blog-content {
-            background: rgba(255, 255, 255, 0.02);
+            background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 3rem;
-            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 3.5rem;
+            backdrop-filter: blur(16px);
+            box-shadow: var(--card-shadow);
         }
 
         .blog-content h2 {
@@ -75,19 +110,39 @@
 <body>
     <!-- Mega Header -->
     <header class="header-glass">
-        <nav class="navbar">
-            <a href="../../index.html" class="brand-logo">
-                <span class="gradient-text">freeconvert</span>.cloud
-            </a>
-            <div class="nav-menu">
+        <nav class="navbar glass">
+            <a href="../../index.html" class="logo"><img src="../../assets/logo.png" alt="freeconvert.cloud"></a>
+            <div class="mobile-toggle" id="mobile-toggle">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="nav-links">
                 <div class="nav-item">
                     <a href="../../index.html#dev" class="nav-link">Developer</a>
+                    <div class="nav-dropdown">
+                        <a href="../tools/html-formatter.html">🌐 HTML Formatter</a>
+                        <a href="../tools/css-formatter.html">🎨 CSS Formatter</a>
+                        <a href="../tools/js-formatter.html">📜 JS Formatter</a>
+                        <a href="../tools/json-to-csv.html">📊 JSON to CSV</a>
+                        <a href="../tools/sql-formatter.html">💾 SQL Formatter</a>
+                    </div>
                 </div>
                 <div class="nav-item">
-                    <a href="../../index.html#image" class="nav-link">Image</a>
+                    <a href="../../index.html#image" class="nav-link">Design</a>
+                    <div class="nav-dropdown">
+                        <a href="../tools/image-compressor.html">🗜️ Compressor</a>
+                        <a href="../tools/image-resizer.html">📐 Resizer</a>
+                        <a href="../tools/palette-extractor.html">🎨 Color Palette</a>
+                        <a href="../tools/rgb-hex-converter.html">🌈 RGB to HEX</a>
+                    </div>
                 </div>
                 <div class="nav-item">
                     <a href="../../index.html#utility" class="nav-link">Utility</a>
+                    <div class="nav-dropdown">
+                        <a href="../tools/password-generator.html">🔑 Password Gen</a>
+                        <a href="../tools/qr-generator.html">🧱 QR Code</a>
+                        <a href="../tools/speed-test.html">🚀 Speed Test</a>
+                        <a href="../tools/stopwatch.html">⏱️ Stopwatch</a>
+                    </div>
                 </div>
             </div>
         </nav>

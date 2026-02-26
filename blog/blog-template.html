@@ -15,6 +15,29 @@
     <meta property="og:description" content="Read our latest guide on {{TITLE}} - Free Convert Cloud">
     <meta property="og:image" content="https://freeconvert.cloud/assets/favicon.png">
     <meta property="og:type" content="article">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "{{TITLE}}",
+      "image": "https://freeconvert.cloud/assets/favicon.png",
+      "author": {
+        "@type": "Organization",
+        "name": "freeconvert.cloud"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "freeconvert.cloud",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://freeconvert.cloud/assets/logo.png"
+        }
+      },
+      "datePublished": "{{DATE}}"
+    }
+    </script>
 
     <!-- Analytics Placeholder -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
@@ -41,11 +64,12 @@
         }
 
         .blog-content {
-            background: rgba(255, 255, 255, 0.02);
+            background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 3rem;
-            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 3.5rem;
+            backdrop-filter: blur(16px);
+            box-shadow: var(--card-shadow);
         }
 
         .blog-content h2 {

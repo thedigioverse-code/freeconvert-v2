@@ -1,7 +1,7 @@
 import json
 import os
 
-TOOLS_FILE = r'c:\Users\Admin\.gemini\antigravity\scratch\freeconvert-v2\tools\tools.json'
+TOOLS_FILE = r'C:\Users\pc\.gemini\antigravity\scratch\freeconvert-v2\tools\tools.json'
 
 new_tools = [
     {
